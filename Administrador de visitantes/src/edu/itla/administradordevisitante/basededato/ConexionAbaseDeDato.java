@@ -56,8 +56,8 @@ public class ConexionAbaseDeDato {
 		
 		int estado = 0;
 		if(usuarioUsuario.equals(usuario) && claveUsuario.equals(clave)){
-			//perfil = "Administrador";
-			perfil = "Portero";
+			perfil = "Administrador";
+			//perfil = "Portero";
 			nombreUsuario = "Proyecto Final";
 			estado = estadoDelLogin.CORRECTO.getEstadoDelLogin();
 		}

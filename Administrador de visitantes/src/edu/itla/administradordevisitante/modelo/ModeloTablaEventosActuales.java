@@ -6,18 +6,18 @@ import javax.swing.table.AbstractTableModel;
 
 import edu.itla.administradordevisitante.evento.Evento;
 
-public class ModeloTablaEventos extends AbstractTableModel{
+public class ModeloTablaEventosActuales extends AbstractTableModel{
 	
 	private static final long serialVersionUID = -1409579478263587874L;
 	//ResultadosBD resultados;
 	private ArrayList<Evento> eventos;
+	
 	private String[] nombreDeColumna = {
 			"Nombre" , "Ubicacion", "Fecha"
 	};
 
-	public ModeloTablaEventos(){
-		
-		
+	public ModeloTablaEventosActuales(){
+		eventos = new ArrayList<Evento>();
 	}
 	
 	@Override
@@ -56,21 +56,12 @@ public class ModeloTablaEventos extends AbstractTableModel{
 	}
 
 	@Override
-	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		
-		return true;
-	}
-
-	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		
 	}
 	
-	public void agregar(){
+	public void mostrarVisitante(){
 		
 	}
 	
-	public void eliminar(){
-		
-	}
 }

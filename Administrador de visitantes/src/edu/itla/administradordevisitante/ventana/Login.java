@@ -27,6 +27,7 @@ public class Login extends JFrame {
     private JButton btnSalirUsuario;
 
 	public Login() {
+		setTitle("Administrador de visitante");
 		
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setDefaultCloseOperation(0);

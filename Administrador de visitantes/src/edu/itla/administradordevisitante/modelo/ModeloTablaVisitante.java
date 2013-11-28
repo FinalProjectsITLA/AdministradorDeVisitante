@@ -16,7 +16,7 @@ public class ModeloTablaVisitante extends AbstractTableModel{
 	};
 	
 	public ModeloTablaVisitante(){
-		
+		visitantes = new ArrayList<Visitante>();
 	}
 
 	@Override

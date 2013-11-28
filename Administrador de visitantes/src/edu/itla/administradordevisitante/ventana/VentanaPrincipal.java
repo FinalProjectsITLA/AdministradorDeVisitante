@@ -12,12 +12,18 @@ import javax.swing.JLabel;
 
 import java.awt.SystemColor;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 import edu.itla.administradordevisitante.controlador.ControladorEventListener;
+import edu.itla.administradordevisitante.modelo.ModeloTablaEventosActuales;
+import edu.itla.administradordevisitante.modelo.ModeloTablaVisitante;
+
+import javax.swing.JTextArea;
+import java.awt.Color;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -29,7 +35,6 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel pnlVisitas;
 	private JPanel pnlUsuario;
 	private JPanel pnlAyuda;
-	private JTable table;
 	private JTextField txtNombreVisitante;
 	private JTextField txtApellidoVisitante;
 	private JTextField txtTelefonoVisitante;
@@ -94,9 +99,27 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel pnlMenuUsuario;
 	private JPanel pnlContenidoUsuario;
 	private JButton btnCrearUsuario;
+	private JTextField textField;
+	private JScrollPane scrollPaneEventosActuales;
+	private JTable tablaEventosActuales;
+	private JTable tablaVisitantes;
+	private ModeloTablaEventosActuales modelEvenosActuales;
+	private ModeloTablaVisitante modelVisitantes;
+	private JPanel pnlDesplegarVisitantesEvento;
+	private JLabel lblBuscarVisitante;
+	private JTextField txtBuscadorVisitante;
+	private JLabel lblFiltrarBusqueda;
+	private JComboBox comboBox;
+	private JScrollPane scrollPaneVisitante;
+	
+	enum categoriaDeBusqueda{
+		
+		Nombre, Apellido
+	}
 
 	public VentanaPrincipal() {
 		
+		setTitle("Administrador de visitante");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(10, 5, 810, 500);
 		setResizable(false);
@@ -108,6 +131,10 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		tabbedPane.setBounds(0, 0, 1000, 720);
 		contentPane.add(tabbedPane);
+		
+		//Modelos
+		modelEvenosActuales = new ModeloTablaEventosActuales();	
+		modelVisitantes = new ModeloTablaVisitante();
 		
 		pnlVentanaPrincipal = new JPanel();
 		tabbedPane.addTab("Inicio", null, pnlVentanaPrincipal, null);
@@ -236,9 +263,29 @@ public class VentanaPrincipal extends JFrame {
 		lblSubTitutoVisitante.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
 		lblSubTitutoVisitante.setBounds(207, 11, 332, 37);
 		pnlAgregarVisitante.add(lblSubTitutoVisitante);
+		
+		JLabel lblId = new JLabel("ID :");
+		lblId.setForeground(SystemColor.textHighlight);
+		lblId.setFont(new Font("Monotype Corsiva", Font.PLAIN, 24));
+		lblId.setBounds(110, 59, 48, 21);
+		pnlAgregarVisitante.add(lblId);
+		
+		textField = new JTextField();
+		textField.setBackground(Color.WHITE);
+		textField.setEditable(false);
+		textField.setText("123456");
+		textField.setBounds(159, 57, 48, 22);
+		pnlAgregarVisitante.add(textField);
+		textField.setColumns(10);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setText("123456");
+		textArea.setBounds(155, 59, 61, 22);
+
 		pnlEventos = new JPanel();
 		tabbedPane.addTab("Eventos", null, pnlEventos, null);
 		pnlEventos.setLayout(null);
+	
 		
 		lblEventos = new JLabel("Eventos");
 		lblEventos.setBounds(396, 11, 146, 53);
@@ -246,14 +293,49 @@ public class VentanaPrincipal extends JFrame {
 		lblEventos.setForeground(SystemColor.textHighlight);
 		lblEventos.setFont(new Font("Monotype Corsiva", Font.PLAIN, 47));
 		
-		table = new JTable();
-		table.setBounds(0, 0, 0, 0);
-		pnlEventos.add(table);
-		
 		pnlIngresarEventos = new JPanel();
 		pnlIngresarEventos.setVisible(false);
 		
+		lblSubTituloEvento = new JLabel("SubTitulo");
+		lblSubTituloEvento.setVisible(false);
+		lblSubTituloEvento.setBounds(255, 60, 332, 37);
+		pnlEventos.add(lblSubTituloEvento);
+		lblSubTituloEvento.setForeground(SystemColor.textHighlight);
+		lblSubTituloEvento.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
+		
+		pnlDesplegarVisitantesEvento = new JPanel();
+		pnlDesplegarVisitantesEvento.setBounds(37, 108, 729, 341);
+		pnlEventos.add(pnlDesplegarVisitantesEvento);
+		pnlDesplegarVisitantesEvento.setLayout(null);
+		
+		scrollPaneVisitante = new JScrollPane();
+		scrollPaneVisitante.setBounds(50, 100, 309, 220);
+		pnlDesplegarVisitantesEvento.add(scrollPaneVisitante);
+		
+		tablaVisitantes = new JTable();
+		tablaVisitantes.setModel(modelVisitantes);
+		scrollPaneVisitante.setViewportView(tablaVisitantes);
+		
+		lblBuscarVisitante = new JLabel("Buscar :");
+		lblBuscarVisitante.setBounds(12, 45, 48, 16);
+		pnlDesplegarVisitantesEvento.add(lblBuscarVisitante);
+		
+		txtBuscadorVisitante = new JTextField();
+		txtBuscadorVisitante.setBounds(72, 44, 148, 20);
+		pnlDesplegarVisitantesEvento.add(txtBuscadorVisitante);
+		txtBuscadorVisitante.setColumns(10);
+		
+		lblFiltrarBusqueda = new JLabel("Filtar Busqueda");
+		lblFiltrarBusqueda.setBounds(232, 47, 90, 14);
+		pnlDesplegarVisitantesEvento.add(lblFiltrarBusqueda);
+		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(categoriaDeBusqueda.values()));
+		comboBox.setBounds(334, 44, 77, 20);
+		pnlDesplegarVisitantesEvento.add(comboBox);
+		
 		pnlOpcionesEventos = new JPanel();
+		pnlOpcionesEventos.setVisible(false);
 		pnlOpcionesEventos.setBounds(340, 62, 246, 224);
 		pnlEventos.add(pnlOpcionesEventos);
 		pnlOpcionesEventos.setLayout(null);
@@ -352,11 +434,23 @@ public class VentanaPrincipal extends JFrame {
 		btnGuardarEventos.setBounds(244, 253, 86, 20);
 		pnlIngresarEventos.add(btnGuardarEventos);
 		
-		lblSubTituloEvento = new JLabel("SubTitulo");
-		lblSubTituloEvento.setForeground(SystemColor.textHighlight);
-		lblSubTituloEvento.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
-		lblSubTituloEvento.setBounds(207, 11, 332, 37);
-		pnlIngresarEventos.add(lblSubTituloEvento);
+		JPanel pnlEventosActuales = new JPanel();
+		pnlEventosActuales.setVisible(false);
+		pnlEventosActuales.setBounds(75, 366, 681, 215);
+		pnlEventos.add(pnlEventosActuales);
+		pnlEventosActuales.setLayout(null);
+		
+		scrollPaneEventosActuales = new JScrollPane();
+		scrollPaneEventosActuales.setBounds(100, 24, 526, 123);
+		pnlEventosActuales.add(scrollPaneEventosActuales);
+		
+		tablaEventosActuales = new JTable();
+		tablaEventosActuales.setModel(modelEvenosActuales);
+		scrollPaneEventosActuales.setViewportView(tablaEventosActuales);
+		
+		JButton btnSeleccionarEvento = new JButton("Aceptar");
+		btnSeleccionarEvento.setBounds(293, 160, 95, 25);
+		pnlEventosActuales.add(btnSeleccionarEvento);
 		
 		pnlUsuario = new JPanel();
 		tabbedPane.addTab("Usuario", null, pnlUsuario, null);
@@ -461,17 +555,6 @@ public class VentanaPrincipal extends JFrame {
 		btnCrearUsuario.setBounds(259, 237, 89, 23);
 		pnlContenidoUsuario.add(btnCrearUsuario);
 		
-		/*JPanel pnlMantenimiento = new JPanel();
-		tabbedPane.addTab("Registro", null, pnlMantenimiento, null);
-		pnlMantenimiento.setLayout(null);
-		
-		JLabel lblMantenimientos = new JLabel("Registro");
-		lblMantenimientos.setBounds(385, 11, 158, 53);
-		lblMantenimientos.setForeground(SystemColor.textHighlight);
-		lblMantenimientos.setFont(new Font("Monotype Corsiva", Font.PLAIN, 47));
-		pnlMantenimiento.add(lblMantenimientos);
-		*/
-		
 		pnlAyuda = new JPanel();
 		tabbedPane.addTab("Ayuda", null, pnlAyuda, null);
 		pnlAyuda.setLayout(null);
@@ -519,10 +602,6 @@ public class VentanaPrincipal extends JFrame {
 
 	public JPanel getPnlAyuda() {
 		return pnlAyuda;
-	}
-
-	public JTable getTable() {
-		return table;
 	}
 
 	public JTextField getTxtNombreVisitante() {
@@ -780,5 +859,4 @@ public class VentanaPrincipal extends JFrame {
 	public JLabel getLblSustituloBienvenida() {
 		return lblSustituloBienvenida;
 	}
-	
 }

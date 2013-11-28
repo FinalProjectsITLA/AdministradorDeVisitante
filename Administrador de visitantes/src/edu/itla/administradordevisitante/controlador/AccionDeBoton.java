@@ -65,6 +65,93 @@ public class AccionDeBoton {
 			JOptionPane.showMessageDialog(Main.getLoggin().getContentPane(), "Debe de llenar los campos correctamente.");
 			Main.getLoggin().getTxtNombreUsuario().requestFocus();
 		}
+	}
+	
+	public void ModificarVisitante(){
 		
+		Main.getVentanaPrincipal().getLblSubTitutoVisitante().setText("Modificar visitante"); 
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		//Main.getVentanaPrincipal().getPnlModificarVisitante().setVisible(true);
+		
+	}
+	
+	public void EliminarVisitante(){
+		
+		Main.getVentanaPrincipal().getLblSubTitutoVisitante().setText("Eliminar visitante");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		//Main.getVentanaPrincipal().getPnlEliminarVisitante().setVisible(true);
+	}
+	
+	public void GuardarVisitantes(){
+		
+		Main.getVentanaPrincipal().getLblSubTitutoVisitante().setText("Guardar");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		//Main.getVentanaPrincipal().getPnlGuardarVisitante().setVisible(true);
+	}
+	
+	public void EventosActuales(){
+		
+		Main.getVentanaPrincipal().getLblSubTituloEvento().setText("Eventos Actuales");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		Main.getVentanaPrincipal().getPnlEventos().setVisible(true);
+	}
+	
+	public void ProximosEventos(){
+		
+		Main.getVentanaPrincipal().getLblSubTituloEvento().setText("Proximos Eventos");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		Main.getVentanaPrincipal().getPnlEventos().setVisible(true);
+	}
+	
+	public void IngresarEvento(){
+		
+		Main.getVentanaPrincipal().getLblSubTituloEvento().setText("Ingresar Evento");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false);
+		Main.getVentanaPrincipal().getPnlOpcionesEventos().setVisible(false);
+		Main.getVentanaPrincipal().getPnlEventos().setVisible(true);
+		Main.getVentanaPrincipal().getPnlIngresarEventos().setVisible(true);
+	}
+	
+	public void RegresarEventos(){
+		
+		Main.getVentanaPrincipal().getLblSubTituloEvento().setText("Regresar");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		Main.getVentanaPrincipal().getPnlEventos().setVisible(true);
+	}
+	
+	public void GuardarEventos(){
+		
+		Main.getVentanaPrincipal().getLblSubTituloEvento().setText("Guardar");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		Main.getVentanaPrincipal().getPnlEventos().setVisible(true);
+	}
+	
+	public void EliminarUsuario(){
+		
+		//Main.getVentanaPrincipal().getLblUsuario().setText("Eliminar");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		//Main.getVentanaPrincipal().getPnlEliminarUsuario().setVisible(true);
+	}
+	
+	public void ModificarUsuario(){
+		
+		//Main.getVentanaPrincipal().getLblUsuario().setText("Modificar");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		//Main.getVentanaPrincipal().getPnlModificarUsuario().setVisible(true);
+	}
+	
+	public void AgregarUsuario(){
+		
+		//Main.getVentanaPrincipal().getLblUsuario().setText("Agregar");
+		Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		//Main.getVentanaPrincipal().getPnlAgregarUsuario().setVisible(true);
+		
+	}
+	
+	public void CrearUsuario(){
+		
+		//Main.getVentanaPrincipal().getLblUsuario().setText("Crear");
+		  Main.getVentanaPrincipal().getPnlOpcionesVisitantes().setVisible(false); 
+		  //Main.getVentanaPrincipal().getPnlCrearUsuario().setVisible(true);
 	}
 }

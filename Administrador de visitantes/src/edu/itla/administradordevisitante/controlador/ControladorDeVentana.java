@@ -6,8 +6,8 @@ import edu.itla.administradordevisitante.main.Main;
 public class ControladorDeVentana {
 	
 	//PerfilUsuario perfil = new PerfilUsuario(); // perfil para obtener el tipo roll almacenado en sistema
-	static boolean  ventanaPrincipal = false;
-	static boolean ventanaLogin = true;
+	static boolean  ventanaPrincipal = true;
+	static boolean ventanaLogin = false;
 	
 	public void acceso(String perfil){
             

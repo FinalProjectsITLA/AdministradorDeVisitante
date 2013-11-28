@@ -37,7 +37,7 @@ public class Main {
 		ventanaPrincipal = new VentanaPrincipal();
 		login = new Login();
 		
-		//ventanaPrincipal.setVisible(ventana.isVentanaPrincipal());
+		ventanaPrincipal.setVisible(ventana.isVentanaPrincipal());
 		login.setVisible(ventana.isVentanaLogin());
 		login.getTxtNombreUsuario().requestFocus();
 	}
