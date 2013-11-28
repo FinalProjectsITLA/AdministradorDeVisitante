@@ -10,7 +10,7 @@ import edu.itla.administradordevisitante.ventana.VentanaPrincipal;
 public class Main {
 	
 	private static VentanaPrincipal ventanaPrincipal;
-	private static Login loggin;
+	private static Login login;
 	private static ControladorDeVentana ventana;
 	
 	public static void main(String[] args){
@@ -35,10 +35,11 @@ public class Main {
 		}
 		
 		ventanaPrincipal = new VentanaPrincipal();
-		loggin = new Login();
+		login = new Login();
 		
 		//ventanaPrincipal.setVisible(ventana.isVentanaPrincipal());
-		loggin.setVisible(ventana.isVentanaLogin());
+		login.setVisible(ventana.isVentanaLogin());
+		login.getTxtNombreUsuario().requestFocus();
 	}
 
 	public static VentanaPrincipal getVentanaPrincipal() {
@@ -46,7 +47,7 @@ public class Main {
 	}
 
 	public static Login getLoggin() {
-		return loggin;
+		return login;
 	}
 	
 }

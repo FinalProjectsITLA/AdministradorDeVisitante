@@ -11,6 +11,7 @@ import java.awt.Color;
 import javax.swing.JTabbedPane;
 
 import edu.itla.administradordevisitante.controlador.ControladorEventListener;
+import edu.itla.administradordevisitante.controlador.ControladorKeyListener;
 
 public class Login extends JFrame {
 
@@ -62,11 +63,13 @@ public class Login extends JFrame {
 		
 		txtClaveUsuario = new JTextField();
 		txtClaveUsuario.setBounds(192, 71, 142, 20);
+		txtClaveUsuario.addKeyListener(new ControladorKeyListener());
 		pnlLogin.add(txtClaveUsuario);
 		txtClaveUsuario.setColumns(10);
 		
 		txtNombreUsuario = new JTextField();
 		txtNombreUsuario.setBounds(192, 25, 142, 20);
+		txtNombreUsuario.addKeyListener(new ControladorKeyListener());
 		pnlLogin.add(txtNombreUsuario);
 		txtNombreUsuario.setColumns(10);
 		
