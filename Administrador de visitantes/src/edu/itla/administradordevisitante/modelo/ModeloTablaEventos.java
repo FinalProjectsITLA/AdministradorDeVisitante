@@ -4,20 +4,19 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import edu.itla.administradordevisitante.basededato.ResultadosBD;
 import edu.itla.administradordevisitante.evento.Evento;
 
 public class ModeloTablaEventos extends AbstractTableModel{
 	
 	private static final long serialVersionUID = -1409579478263587874L;
-	ResultadosBD resultados;
+	//ResultadosBD resultados;
 	private ArrayList<Evento> eventos;
 	private String[] nombreDeColumna = {
 			"Nombre" , "Ubicacion", "Fecha"
 	};
 
 	public ModeloTablaEventos(){
-		resultados = new ResultadosBD();
+		
 		
 	}
 	

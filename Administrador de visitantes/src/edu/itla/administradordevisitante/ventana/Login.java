@@ -17,7 +17,7 @@ public class Login extends JFrame {
 	private static final long serialVersionUID = -60578525879179199L;
 	private JPanel contentPane, pnlLogin;
 	private JTextField txtNombreUsuario;
-	private JTextField txtApellidoUsuario;
+	private JTextField txtClaveUsuario;
     private JTabbedPane tabbedPane;
     private JLabel lblNombreUsuario;
     private JLabel lblApellidoUsuario;
@@ -50,6 +50,8 @@ public class Login extends JFrame {
 		
 		btnInsetarUsuario = new JButton("Aceptar");
 		btnInsetarUsuario.setBounds(146, 102, 89, 23);
+		btnInsetarUsuario.addActionListener(new ControladorEventListener());
+		btnInsetarUsuario.setActionCommand("LoginUsuario");
 		pnlLogin.add(btnInsetarUsuario);
 		
 		btnSalirUsuario = new JButton("Salir");
@@ -58,27 +60,35 @@ public class Login extends JFrame {
 		btnSalirUsuario.setActionCommand("Salir");
 		pnlLogin.add(btnSalirUsuario);
 		
-		txtApellidoUsuario = new JTextField();
-		txtApellidoUsuario.setBounds(192, 71, 142, 20);
-		pnlLogin.add(txtApellidoUsuario);
-		txtApellidoUsuario.setColumns(10);
+		txtClaveUsuario = new JTextField();
+		txtClaveUsuario.setBounds(192, 71, 142, 20);
+		pnlLogin.add(txtClaveUsuario);
+		txtClaveUsuario.setColumns(10);
 		
 		txtNombreUsuario = new JTextField();
 		txtNombreUsuario.setBounds(192, 25, 142, 20);
 		pnlLogin.add(txtNombreUsuario);
 		txtNombreUsuario.setColumns(10);
 		
-		lblNombreUsuario = new JLabel("Usuario");
-		lblNombreUsuario.setBounds(146, 28, 46, 14);
+		lblNombreUsuario = new JLabel("Usuario :");
+		lblNombreUsuario.setBounds(128, 28, 64, 14);
 		pnlLogin.add(lblNombreUsuario);
 		
-		lblApellidoUsuario = new JLabel("Apellido");
-		lblApellidoUsuario.setBounds(146, 74, 46, 14);
+		lblApellidoUsuario = new JLabel("Contra\u00F1a :");
+		lblApellidoUsuario.setBounds(128, 74, 64, 14);
 		pnlLogin.add(lblApellidoUsuario);
 		
 		lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(12, 0, 137, 143);
+		lblNewLabel.setBounds(12, 0, 106, 143);
 		pnlLogin.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/edu/itla/administradordeevento/imagenes/login (Copiar)1.gif")));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/edu/itla/administradordevisitante/imagenes/login (Copiar)1.gif")));
+	}
+
+	public JTextField getTxtNombreUsuario() {
+		return txtNombreUsuario;
+	}
+
+	public JTextField getTxtClaveUsuario() {
+		return txtClaveUsuario;
 	}
 }

@@ -18,6 +18,10 @@ public class ControladorEventListener implements ActionListener{
 			boton.AgregarVisitante(); //Se ejecuta la accion del boton
 		}
 		
+		if(e.getActionCommand().equals("LoginUsuario")){
+			boton.login();
+			
+		}
 	}
 
 }

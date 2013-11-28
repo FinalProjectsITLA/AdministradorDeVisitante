@@ -23,7 +23,7 @@ public class VentanaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = -499250313361610258L;
 	private JPanel contentPane;
-	private final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
+	private final JTabbedPane tabbedPane;
 	private JPanel pnlVentanaPrincipal;
 	private JPanel pnlEventos;
 	private JPanel pnlVisitas;
@@ -40,7 +40,7 @@ public class VentanaPrincipal extends JFrame {
 	private JTextField txtApellidoUsuario;
 	private JTextField txtRegistroUsuario;
 	private JTextField txtRegistroClave;
-	private JLabel label;
+	private JLabel lblBienvenido;
 	private JLabel lblGraciasPorUsar;
 	private JLabel lblEventos;
 	private JLabel lblVisitas;
@@ -64,6 +64,7 @@ public class VentanaPrincipal extends JFrame {
 	private JLabel lblDiaEvento;
 	private JLabel lblHoraEvento;
 	private JLabel lblAyuda;
+	private JLabel lblSustituloBienvenida;
 	private JLabel lblPreguntasMasFrecuentes;
 	private JComboBox cbbSexoVisitante;
 	private JComboBox cmxPerfil;
@@ -103,6 +104,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		tabbedPane = new JTabbedPane(JTabbedPane.LEFT);
 		contentPane.setLayout(null);
 		tabbedPane.setBounds(0, 0, 1000, 720);
 		contentPane.add(tabbedPane);
@@ -111,17 +113,23 @@ public class VentanaPrincipal extends JFrame {
 		tabbedPane.addTab("Inicio", null, pnlVentanaPrincipal, null);
 		pnlVentanaPrincipal.setLayout(null);
 		
-		label = new JLabel("Bienvenidos");
-		label.setBounds(362, 11, 213, 53);
-		label.setForeground(SystemColor.textHighlight);
-		label.setFont(new Font("Monotype Corsiva", Font.PLAIN, 47));
-		pnlVentanaPrincipal.add(label);
+		lblBienvenido = new JLabel("Bienvenido");
+		lblBienvenido.setBounds(362, 11, 213, 53);
+		lblBienvenido.setForeground(SystemColor.textHighlight);
+		lblBienvenido.setFont(new Font("Monotype Corsiva", Font.PLAIN, 47));
+		pnlVentanaPrincipal.add(lblBienvenido);
 		
 		lblGraciasPorUsar = new JLabel("Gracias por usar el software mas completo...");
 		lblGraciasPorUsar.setForeground(SystemColor.textHighlight);
 		lblGraciasPorUsar.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
-		lblGraciasPorUsar.setBounds(226, 78, 486, 62);
+		lblGraciasPorUsar.setBounds(226, 124, 486, 62);
 		pnlVentanaPrincipal.add(lblGraciasPorUsar);
+		
+		lblSustituloBienvenida = new JLabel("Usuario");
+		lblSustituloBienvenida.setForeground(SystemColor.textHighlight);
+		lblSustituloBienvenida.setFont(new Font("Monotype Corsiva", Font.PLAIN, 24));
+		lblSustituloBienvenida.setBounds(362, 85, 213, 28);
+		pnlVentanaPrincipal.add(lblSustituloBienvenida);
 		
 		pnlVisitas = new JPanel();
 		tabbedPane.addTab("Visitante", null, pnlVisitas, null);
@@ -246,7 +254,7 @@ public class VentanaPrincipal extends JFrame {
 		pnlIngresarEventos.setVisible(false);
 		
 		pnlOpcionesEventos = new JPanel();
-		pnlOpcionesEventos.setBounds(340, 90, 246, 224);
+		pnlOpcionesEventos.setBounds(340, 62, 246, 224);
 		pnlEventos.add(pnlOpcionesEventos);
 		pnlOpcionesEventos.setLayout(null);
 		
@@ -350,7 +358,7 @@ public class VentanaPrincipal extends JFrame {
 		lblSubTituloEvento.setBounds(207, 11, 332, 37);
 		pnlIngresarEventos.add(lblSubTituloEvento);
 		
-		pnlUsuario = new JPanel(); // Pestaña de usuario
+		pnlUsuario = new JPanel();
 		tabbedPane.addTab("Usuario", null, pnlUsuario, null);
 		pnlUsuario.setLayout(null);
 		
@@ -558,7 +566,7 @@ public class VentanaPrincipal extends JFrame {
 	}
 
 	public JLabel getLabel() {
-		return label;
+		return lblBienvenido;
 	}
 
 	public JLabel getLblGraciasPorUsar() {
@@ -767,6 +775,10 @@ public class VentanaPrincipal extends JFrame {
 
 	public JButton getBtnCrearUsuario() {
 		return btnCrearUsuario;
+	}
+
+	public JLabel getLblSustituloBienvenida() {
+		return lblSustituloBienvenida;
 	}
 	
 }

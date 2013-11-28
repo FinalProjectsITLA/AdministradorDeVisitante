@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
-import edu.itla.administradordevisitante.basededato.ResultadosBD;
 import edu.itla.administradordevisitante.visitante.Visitante;
 
 public class ModeloTablaVisitante extends AbstractTableModel{
 
 	private static final long serialVersionUID = 2763123826563801093L;
-	ResultadosBD resultados;
+	//ResultadosBD resultados;
 	private ArrayList<Visitante> visitantes;
 	private String[] nombreDeColumna = {
 			"Nombre" , "Apellido", "Sexo"

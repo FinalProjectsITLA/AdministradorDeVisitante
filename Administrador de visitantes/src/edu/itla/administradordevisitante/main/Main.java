@@ -37,16 +37,15 @@ public class Main {
 		ventanaPrincipal = new VentanaPrincipal();
 		loggin = new Login();
 		
+		//ventanaPrincipal.setVisible(ventana.isVentanaPrincipal());
 		loggin.setVisible(ventana.isVentanaLogin());
-		ventanaPrincipal.setVisible(ventana.isVentanaPrincipal());
-		
 	}
 
 	public static VentanaPrincipal getVentanaPrincipal() {
 		return ventanaPrincipal;
 	}
 
-	public Login getLoggin() {
+	public static Login getLoggin() {
 		return loggin;
 	}
 	

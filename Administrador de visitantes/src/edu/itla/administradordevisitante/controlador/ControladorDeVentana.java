@@ -1,46 +1,56 @@
 package edu.itla.administradordevisitante.controlador;
 
 import edu.itla.administradordevisitante.usuario.PerfilUsuario;
+import edu.itla.administradordevisitante.main.Main;
 
 public class ControladorDeVentana {
 	
-	PerfilUsuario perfil; // perfil para obtener el tipo roll almacenado en sistema
-	boolean ventanaPrincipal = true;
-	boolean ventanaLogin = false;
+	//PerfilUsuario perfil = new PerfilUsuario(); // perfil para obtener el tipo roll almacenado en sistema
+	static boolean  ventanaPrincipal = false;
+	static boolean ventanaLogin = true;
 	
-	public ControladorDeVentana() {
-		
-		perfil = new PerfilUsuario();
-		permiso(perfil.permisoDeUsuario());
-	}
-	
-	public void permiso(String permiso){
-		
-		// Habilitando las visitas determinadas
-		if(permiso.equals(perfil.getRoll()[0])){
-			// Acceso a todo
-			
+	public void acceso(String perfil){
+            
+        if(perfil.equals("Administrador")){
+        	// Ventana de login
+        	Main.getLoggin().setVisible(false);
+        	Main.getVentanaPrincipal().getTabbedPane().setEnabledAt(3, true); // Abilitar pestaña de usuario
+        	//Evento
+        	Main.getVentanaPrincipal().getBtnIngresarEvento().setVisible(true);
+        	//Visitante
+			Main.getVentanaPrincipal().getBtnEliminarVisitante().setVisible(true);
+			Main.getVentanaPrincipal().getBtnModificarVisitante().setVisible(true);
+			// Ventana principal
+			Main.getVentanaPrincipal().setVisible(true);
 		}
-		if(permiso.equals(perfil.getRoll()[1])){
-			//Desabilitar Mantenimiento
-			
+		if(perfil.equals("Portero")){
+			// Ventana de login
+			Main.getLoggin().setVisible(false);
+			Main.getVentanaPrincipal().getTabbedPane().setEnabledAt(3, false); // Desabilitar Pestaña de usuario
+			//Evento
+			Main.getVentanaPrincipal().getBtnIngresarEvento().setVisible(false);
+			//Visitante
+			Main.getVentanaPrincipal().getBtnEliminarVisitante().setVisible(false);
+			Main.getVentanaPrincipal().getBtnModificarVisitante().setVisible(false);
+			// Ventana Principal
+			Main.getVentanaPrincipal().setVisible(true);
 		}
 	}
 
-	public boolean isVentanaPrincipal() {
+	public static boolean isVentanaPrincipal() {
 		return ventanaPrincipal;
 	}
 
-	public boolean isVentanaLogin() {
+	public static boolean isVentanaLogin() {
 		return ventanaLogin;
 	}
 
-	public void setVentanaPrincipal(boolean ventanaPrincipal) {
-		this.ventanaPrincipal = ventanaPrincipal;
+	public static void setVentanaPrincipal(boolean ventanaPrincipal) {
+		ControladorDeVentana.ventanaPrincipal = ventanaPrincipal;
 	}
 
-	public void setVentanaLogin(boolean ventanaLogin) {
-		this.ventanaLogin = ventanaLogin;
+	public static void setVentanaLogin(boolean ventanaLogin) {
+		ControladorDeVentana.ventanaLogin = ventanaLogin;
 	}
 	
 }
