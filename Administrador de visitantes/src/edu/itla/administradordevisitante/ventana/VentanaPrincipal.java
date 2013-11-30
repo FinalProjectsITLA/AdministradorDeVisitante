@@ -24,6 +24,7 @@ import edu.itla.administradordevisitante.controlador.ControladorEventListener;
 import edu.itla.administradordevisitante.modelo.ModeloTablaEventosActuales;
 import edu.itla.administradordevisitante.modelo.ModeloTablaEventosProximos;
 import edu.itla.administradordevisitante.modelo.ModeloTablaVisitante;
+import edu.itla.administradordevisitante.modelo.ModeloTablaVisitanteInvitaciones;
 
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -37,6 +38,7 @@ import java.text.ParseException;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JPasswordField;
+import edu.itla.administradordevisitante.ventana.VentanaPrincipal.categoriaDeBusqueda;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -116,6 +118,7 @@ public class VentanaPrincipal extends JFrame {
 	private ModeloTablaEventosActuales modelEvenosActuales;
 	private ModeloTablaVisitante modelVisitantes;
 	private ModeloTablaEventosProximos modelProximosEventos;
+	private ModeloTablaVisitanteInvitaciones modeloVisitantesInvitacion;
 	private JPanel pnlDesplegarVisitantesEvento;
 	private JPanel pnlEventosActuales;
 	private JLabel lblBuscarVisitante;
@@ -124,6 +127,7 @@ public class VentanaPrincipal extends JFrame {
 	private JComboBox comboBox;
 	private JScrollPane scrollPaneVisitante;
 	private JScrollPane scrollPaneProximosEventos;
+	private JScrollPane scrollPaneVisitantesInvitaciones;
 	private JButton btnRegresarEventosActuales;
 	private JPanel pnlProximosEventos;
 	private JButton btnRegresarProximosEventos;
@@ -148,25 +152,55 @@ public class VentanaPrincipal extends JFrame {
 	private JButton btnCrearInvitaciones;
 	private JButton btnModificarInvitaciones;
 	private JButton btnEliminarOpcionInvitaciones;
-	private JPanel pnlAyuda;
+	private JPanel pnlRegistro;
 	private JPanel pnlEditorInvitaciones;
 	private JLabel lblIDeventoVIsitante;
-	private JFormattedTextField formattedTextField;
-	private JButton button;
-	private JTextField textField;
+	private JFormattedTextField txtIDeventoInvitaciones;
+	private JButton btnIDeventoInvitaciones;
+	private JTextField txtNombreEventoInvitaciones;
 	private JLabel lblEvento;
 	private JLabel lblInvitacionNo;
-	private JFormattedTextField formattedTextField_1;
+	private JFormattedTextField txtNumeroInvitacion;
 	private JLabel lblVisitantes;
 	private JButton bntBuscarVisitanteEvento;
-	private JTextField textField_1;
+	private JTextField txtBuscarVitanteInvitaciones;
+	private JButton btnInvitarInvitaciones;
+	private JButton btnNumeroInvitaciones;
+	private JButton btnGuardarCambiosInvitaciones;
+	private JButton btnEliminarIvitacion;
+	private JComboBox cbbFiltrarVisitanteInvitaciones;
+	private JButton btnBuscarInvitadosInvitaciones;
+	private JButton btnRegresarInvitaciones;
+	private JTable tablaVisitantesInvitaciones;
+	private JPanel pnlAyuda;
+	private JPanel pnlConfiguracion;
+	private JPanel pnlOpcionRegistro;
+	private JLabel lblRegistro;
+	private JButton btnRegistrarVisitas;
+	private JButton btnRegistrarVisitasImprevistas;
+	private JPanel pnlEditorRegistro;
+	private JLabel lblSubtituloRegistro;
+	private JLabel lblNombreEventoRegistro;
+	private JTextField txtNombreEventoRegistro;
+	private JLabel lblIdEventoRegistro;
+	private JTextField txtIDEventoRegistro;
+	private JLabel lblVisitantesPorLlegar;
+	private JTextField txtFaltanVisitantesReistro;
+	private JLabel lblBuscarRegistro;
+	private JTextField txtBuscarRegistro;
+	private JLabel label_2;
+	private JComboBox cbbFiltrarBusquedaRegistro;
+	private JButton bntBuscarRegistro;
+	private JScrollPane scrollPaneVisitantesRegistro;
+	private JTable tablaVisitantesRegistro;
 	
 	enum categoriaDeBusqueda{
 		
-		Nombre, Apellido
+		Todos, Nombre, Apellido
 	}
 
 	public VentanaPrincipal() throws ParseException {
+		
 		setTitle("Administrador de visitante");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds(10, 5, 810, 500);
@@ -185,6 +219,7 @@ public class VentanaPrincipal extends JFrame {
 		modelEvenosActuales = new ModeloTablaEventosActuales();	
 		modelVisitantes = new ModeloTablaVisitante();
 		modelProximosEventos = new ModeloTablaEventosProximos();
+		modeloVisitantesInvitacion = new ModeloTablaVisitanteInvitaciones();
 		
 		pnlVentanaPrincipal = new JPanel();
 		tabbedPane.addTab("Inicio", null, pnlVentanaPrincipal, null);
@@ -763,6 +798,30 @@ public class VentanaPrincipal extends JFrame {
 		pnlInvitaciones.add(lblSubtituloInvitaciones);
 		
 		pnlEditorInvitaciones = new JPanel();
+		pnlEditorInvitaciones.setVisible(false);
+		
+		pnlOpcionesInvitaciones = new JPanel();
+		pnlOpcionesInvitaciones.setBounds(303, 122, 179, 106);
+		pnlInvitaciones.add(pnlOpcionesInvitaciones);
+		pnlOpcionesInvitaciones.setLayout(null);
+		
+		btnCrearInvitaciones = new JButton("Crear Invitaciones");
+		btnCrearInvitaciones.addActionListener(new ControladorEventListener());
+		btnCrearInvitaciones.setActionCommand("CrearInvitaciones");
+		btnCrearInvitaciones.setBounds(25, 11, 135, 20);
+		pnlOpcionesInvitaciones.add(btnCrearInvitaciones);
+		
+		btnModificarInvitaciones = new JButton("Modificar");
+		btnModificarInvitaciones.addActionListener(new ControladorEventListener());
+		btnModificarInvitaciones.setActionCommand("ModificarInvitaciones");
+		btnModificarInvitaciones.setBounds(25, 42, 135, 20);
+		pnlOpcionesInvitaciones.add(btnModificarInvitaciones);
+		
+		btnEliminarOpcionInvitaciones = new JButton("Eliminar");
+		btnEliminarOpcionInvitaciones.addActionListener(new ControladorEventListener());
+		btnEliminarOpcionInvitaciones.setActionCommand("EliminarOpcionInvitaciones");
+		btnEliminarOpcionInvitaciones.setBounds(25, 73, 135, 20);
+		pnlOpcionesInvitaciones.add(btnEliminarOpcionInvitaciones);
 		pnlEditorInvitaciones.setBounds(81, 122, 629, 465);
 		pnlInvitaciones.add(pnlEditorInvitaciones);
 		pnlEditorInvitaciones.setLayout(null);
@@ -773,21 +832,21 @@ public class VentanaPrincipal extends JFrame {
 		lblIDeventoVIsitante.setBounds(331, 11, 125, 23);
 		pnlEditorInvitaciones.add(lblIDeventoVIsitante);
 		
-		formattedTextField = new JFormattedTextField();
-		formattedTextField.setBounds(466, 12, 56, 20);
-		pnlEditorInvitaciones.add(formattedTextField);
+		txtIDeventoInvitaciones = new JFormattedTextField();
+		txtIDeventoInvitaciones.setBounds(466, 12, 56, 20);
+		pnlEditorInvitaciones.add(txtIDeventoInvitaciones);
 		
-		button = new JButton("");
-		button.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/edu/itla/administradordevisitante/imagenes/IDvisitante30x30.png")));
-		button.setBounds(532, 11, 48, 23);
-		pnlEditorInvitaciones.add(button);
+		btnIDeventoInvitaciones = new JButton("");
+		btnIDeventoInvitaciones.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/edu/itla/administradordevisitante/imagenes/IDvisitante30x30.png")));
+		btnIDeventoInvitaciones.setBounds(532, 11, 48, 23);
+		pnlEditorInvitaciones.add(btnIDeventoInvitaciones);
 		
-		textField = new JTextField();
-		textField.setBackground(Color.WHITE);
-		textField.setEditable(false);
-		textField.setBounds(345, 45, 239, 20);
-		pnlEditorInvitaciones.add(textField);
-		textField.setColumns(10);
+		txtNombreEventoInvitaciones = new JTextField();
+		txtNombreEventoInvitaciones.setBackground(Color.WHITE);
+		txtNombreEventoInvitaciones.setEditable(false);
+		txtNombreEventoInvitaciones.setBounds(345, 45, 239, 20);
+		pnlEditorInvitaciones.add(txtNombreEventoInvitaciones);
+		txtNombreEventoInvitaciones.setColumns(10);
 		
 		lblEvento = new JLabel("Nombre del evento :");
 		lblEvento.setForeground(SystemColor.textHighlight);
@@ -801,9 +860,11 @@ public class VentanaPrincipal extends JFrame {
 		lblInvitacionNo.setBounds(27, 11, 153, 23);
 		pnlEditorInvitaciones.add(lblInvitacionNo);
 		
-		formattedTextField_1 = new JFormattedTextField();
-		formattedTextField_1.setBounds(190, 15, 56, 20);
-		pnlEditorInvitaciones.add(formattedTextField_1);
+		txtNumeroInvitacion = new JFormattedTextField();
+		txtNumeroInvitacion.setEditable(false);
+		txtNumeroInvitacion.setBackground(Color.WHITE);
+		txtNumeroInvitacion.setBounds(190, 15, 56, 20);
+		pnlEditorInvitaciones.add(txtNumeroInvitacion);
 		
 		lblVisitantes = new JLabel("Visitantes");
 		lblVisitantes.setForeground(SystemColor.textHighlight);
@@ -812,58 +873,168 @@ public class VentanaPrincipal extends JFrame {
 		pnlEditorInvitaciones.add(lblVisitantes);
 		
 		JLabel label = new JLabel("Buscar :");
-		label.setBounds(69, 136, 48, 16);
+		label.setBounds(59, 136, 48, 16);
 		pnlEditorInvitaciones.add(label);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(129, 135, 148, 20);
-		pnlEditorInvitaciones.add(textField_1);
+		txtBuscarVitanteInvitaciones = new JTextField();
+		txtBuscarVitanteInvitaciones.setColumns(10);
+		txtBuscarVitanteInvitaciones.setBounds(119, 135, 148, 20);
+		pnlEditorInvitaciones.add(txtBuscarVitanteInvitaciones);
 		
 		JLabel lblFiltarBusqueda = new JLabel("Filtar Busqueda :");
-		lblFiltarBusqueda.setBounds(289, 138, 90, 14);
+		lblFiltarBusqueda.setBounds(277, 138, 102, 14);
 		pnlEditorInvitaciones.add(lblFiltarBusqueda);
 		
-		JComboBox cbbFiltrarVisitanteInvitaciones = new JComboBox();
-		cbbFiltrarVisitanteInvitaciones.addItem("Nombre");
-		cbbFiltrarVisitanteInvitaciones.addItem("Apellido");
+		cbbFiltrarVisitanteInvitaciones = new JComboBox();
+		cbbFiltrarVisitanteInvitaciones.setModel(new DefaultComboBoxModel(categoriaDeBusqueda.values()));
 		cbbFiltrarVisitanteInvitaciones.setBounds(391, 135, 77, 20);
 		pnlEditorInvitaciones.add(cbbFiltrarVisitanteInvitaciones);
 		
-		JButton btnBuscarInvitadosInvitaciones = new JButton("");
+		btnBuscarInvitadosInvitaciones = new JButton("");
 		btnBuscarInvitadosInvitaciones.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/edu/itla/administradordevisitante/imagenes/IDvisitante30x30.png")));
 		btnBuscarInvitadosInvitaciones.setBounds(478, 136, 48, 23);
 		pnlEditorInvitaciones.add(btnBuscarInvitadosInvitaciones);
 		
-		JScrollPane scrollPaneVisitantesInvitaciones = new JScrollPane();
-		scrollPaneVisitantesInvitaciones.setBounds(129, 186, 309, 220);
+		scrollPaneVisitantesInvitaciones = new JScrollPane();
+		scrollPaneVisitantesInvitaciones.setBounds(163, 186, 309, 220);
 		pnlEditorInvitaciones.add(scrollPaneVisitantesInvitaciones);
 		
-		JTable tablaVisitantesInvitaciones = new JTable();
-		//tablaVisitantesInvitaciones.set
+		tablaVisitantesInvitaciones = new JTable();
+		tablaVisitantesInvitaciones.setModel(modeloVisitantesInvitacion);
+		scrollPaneVisitantesInvitaciones.setViewportView(tablaVisitantesInvitaciones);
 		
-		pnlOpcionesInvitaciones = new JPanel();
-		pnlOpcionesInvitaciones.setBounds(303, 122, 179, 106);
-		pnlInvitaciones.add(pnlOpcionesInvitaciones);
-		pnlOpcionesInvitaciones.setLayout(null);
+		btnInvitarInvitaciones = new JButton("Invitar");
+		btnInvitarInvitaciones.setBounds(111, 417, 89, 23);
+		pnlEditorInvitaciones.add(btnInvitarInvitaciones);
 		
-		btnCrearInvitaciones = new JButton("Crear Invitaciones");
-		btnCrearInvitaciones.setActionCommand("AgregarUsuario");
-		btnCrearInvitaciones.setBounds(25, 11, 135, 20);
-		pnlOpcionesInvitaciones.add(btnCrearInvitaciones);
+		btnNumeroInvitaciones = new JButton("");
+		btnNumeroInvitaciones.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/edu/itla/administradordevisitante/imagenes/IDvisitante30x30.png")));
+		btnNumeroInvitaciones.setBounds(256, 14, 48, 23);
+		pnlEditorInvitaciones.add(btnNumeroInvitaciones);
 		
-		btnModificarInvitaciones = new JButton("Modificar");
-		btnModificarInvitaciones.setActionCommand("AgregarUsuario");
-		btnModificarInvitaciones.setBounds(25, 42, 135, 20);
-		pnlOpcionesInvitaciones.add(btnModificarInvitaciones);
+		btnGuardarCambiosInvitaciones = new JButton("Guardar Cambios");
+		btnGuardarCambiosInvitaciones.setBounds(210, 417, 125, 23);
+		pnlEditorInvitaciones.add(btnGuardarCambiosInvitaciones);
 		
-		btnEliminarOpcionInvitaciones = new JButton("Eliminar");
-		btnEliminarOpcionInvitaciones.setActionCommand("AgregarUsuario");
-		btnEliminarOpcionInvitaciones.setBounds(25, 73, 135, 20);
-		pnlOpcionesInvitaciones.add(btnEliminarOpcionInvitaciones);
+		btnEliminarIvitacion = new JButton("Eliminar");
+		btnEliminarIvitacion.setBounds(345, 417, 89, 23);
+		pnlEditorInvitaciones.add(btnEliminarIvitacion);
+		
+		btnRegresarInvitaciones = new JButton("Regresar");
+		btnRegresarInvitaciones.addActionListener(new ControladorEventListener());
+		btnRegresarInvitaciones.setActionCommand("RegresarInvitaciones");
+		btnRegresarInvitaciones.setBounds(444, 417, 89, 23);
+		pnlEditorInvitaciones.add(btnRegresarInvitaciones);
+		
+		pnlRegistro = new JPanel();
+		tabbedPane.addTab("Registro", null, pnlRegistro, null);
+		pnlRegistro.setLayout(null);
+		
+		pnlEditorRegistro = new JPanel();
+		pnlEditorRegistro.setBounds(44, 127, 674, 440);
+		pnlRegistro.add(pnlEditorRegistro);
+		pnlEditorRegistro.setLayout(null);
+		
+		lblNombreEventoRegistro = new JLabel("Nombre del evento :");
+		lblNombreEventoRegistro.setBounds(224, 7, 190, 23);
+		pnlEditorRegistro.add(lblNombreEventoRegistro);
+		lblNombreEventoRegistro.setForeground(SystemColor.textHighlight);
+		lblNombreEventoRegistro.setFont(new Font("Monotype Corsiva", Font.PLAIN, 25));
+		
+		txtNombreEventoRegistro = new JTextField();
+		txtNombreEventoRegistro.setBounds(414, 11, 239, 20);
+		pnlEditorRegistro.add(txtNombreEventoRegistro);
+		txtNombreEventoRegistro.setEditable(false);
+		txtNombreEventoRegistro.setColumns(10);
+		txtNombreEventoRegistro.setBackground(Color.WHITE);
+		
+		lblIdEventoRegistro = new JLabel("ID evento :");
+		lblIdEventoRegistro.setForeground(SystemColor.textHighlight);
+		lblIdEventoRegistro.setFont(new Font("Monotype Corsiva", Font.PLAIN, 25));
+		lblIdEventoRegistro.setBounds(10, 14, 113, 23);
+		pnlEditorRegistro.add(lblIdEventoRegistro);
+		
+		txtIDEventoRegistro = new JTextField();
+		txtIDEventoRegistro.setEditable(false);
+		txtIDEventoRegistro.setColumns(10);
+		txtIDEventoRegistro.setBackground(Color.WHITE);
+		txtIDEventoRegistro.setBounds(133, 18, 71, 20);
+		pnlEditorRegistro.add(txtIDEventoRegistro);
+		
+		lblVisitantesPorLlegar = new JLabel("Visitantes por llegar :");
+		lblVisitantesPorLlegar.setForeground(SystemColor.textHighlight);
+		lblVisitantesPorLlegar.setFont(new Font("Monotype Corsiva", Font.PLAIN, 25));
+		lblVisitantesPorLlegar.setBounds(10, 48, 209, 23);
+		pnlEditorRegistro.add(lblVisitantesPorLlegar);
+		
+		txtFaltanVisitantesReistro = new JTextField();
+		txtFaltanVisitantesReistro.setBackground(Color.WHITE);
+		txtFaltanVisitantesReistro.setEditable(false);
+		txtFaltanVisitantesReistro.setBounds(224, 52, 59, 20);
+		pnlEditorRegistro.add(txtFaltanVisitantesReistro);
+		txtFaltanVisitantesReistro.setColumns(10);
+		
+		lblBuscarRegistro = new JLabel("Buscar :");
+		lblBuscarRegistro.setBounds(66, 101, 48, 16);
+		pnlEditorRegistro.add(lblBuscarRegistro);
+		
+		txtBuscarRegistro = new JTextField();
+		txtBuscarRegistro.setColumns(10);
+		txtBuscarRegistro.setBounds(126, 100, 148, 20);
+		pnlEditorRegistro.add(txtBuscarRegistro);
+		
+		label_2 = new JLabel("Filtar Busqueda :");
+		label_2.setBounds(284, 103, 102, 14);
+		pnlEditorRegistro.add(label_2);
+		
+		cbbFiltrarBusquedaRegistro = new JComboBox();
+		cbbFiltrarBusquedaRegistro.setModel(new DefaultComboBoxModel(categoriaDeBusqueda.values()));
+		cbbFiltrarBusquedaRegistro.setBounds(398, 100, 77, 20);
+		pnlEditorRegistro.add(cbbFiltrarBusquedaRegistro);
+		
+		bntBuscarRegistro = new JButton("");
+		bntBuscarRegistro.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/edu/itla/administradordevisitante/imagenes/IDvisitante30x30.png")));
+		bntBuscarRegistro.setBounds(485, 101, 48, 23);
+		pnlEditorRegistro.add(bntBuscarRegistro);
+		
+		scrollPaneVisitantesRegistro = new JScrollPane();
+		scrollPaneVisitantesRegistro.setBounds(170, 151, 309, 220);
+		pnlEditorRegistro.add(scrollPaneVisitantesRegistro);
+		
+		tablaVisitantesRegistro = new JTable();
+		
+		pnlOpcionRegistro = new JPanel();
+		pnlOpcionRegistro.setBounds(254, 127, 209, 79);
+		pnlRegistro.add(pnlOpcionRegistro);
+		pnlOpcionRegistro.setLayout(null);
+		
+		btnRegistrarVisitas = new JButton("Registrar Visitas");
+		btnRegistrarVisitas.setActionCommand("CrearInvitaciones");
+		btnRegistrarVisitas.setBounds(10, 11, 189, 23);
+		pnlOpcionRegistro.add(btnRegistrarVisitas);
+		
+		btnRegistrarVisitasImprevistas = new JButton("Registrar Visita Imprevista");
+		btnRegistrarVisitasImprevistas.setActionCommand("CrearInvitaciones");
+		btnRegistrarVisitasImprevistas.setBounds(10, 45, 189, 23);
+		pnlOpcionRegistro.add(btnRegistrarVisitasImprevistas);
+		
+		lblRegistro = new JLabel("Registro");
+		lblRegistro.setForeground(SystemColor.textHighlight);
+		lblRegistro.setFont(new Font("Monotype Corsiva", Font.PLAIN, 47));
+		lblRegistro.setBounds(292, 11, 152, 53);
+		pnlRegistro.add(lblRegistro);
+		
+		lblSubtituloRegistro = new JLabel("SubTitulo");
+		lblSubtituloRegistro.setForeground(SystemColor.textHighlight);
+		lblSubtituloRegistro.setFont(new Font("Monotype Corsiva", Font.PLAIN, 30));
+		lblSubtituloRegistro.setBounds(243, 70, 322, 46);
+		pnlRegistro.add(lblSubtituloRegistro);
+		
+		pnlConfiguracion = new JPanel();
+		tabbedPane.addTab("Configuracion", null, pnlConfiguracion, null);
 		
 		pnlAyuda = new JPanel();
-		tabbedPane.addTab("Registro", null, pnlAyuda, null);
+		tabbedPane.addTab("Ayuda", null, pnlAyuda, null);
 	}
 
 	public static long getSerialversionuid() {
@@ -1220,5 +1391,69 @@ public class VentanaPrincipal extends JFrame {
 	
 	public JButton getBtnEliminarUsuario(){
 		return btnEliminarUsuario;
+	}
+
+	public JButton getBtnCrearInvitaciones() {
+		return btnCrearInvitaciones;
+	}
+
+	public JButton getBtnEliminarOpcionInvitaciones() {
+		return btnEliminarOpcionInvitaciones;
+	}
+
+	public JButton getBtnInvitarInvitaciones() {
+		return btnInvitarInvitaciones;
+	}
+
+	public JButton getBtnEliminarIvitacion() {
+		return btnEliminarIvitacion;
+	}
+
+	public JButton getBtnBuscarInvitadosInvitaciones() {
+		return btnBuscarInvitadosInvitaciones;
+	}
+
+	public JButton getBtnRegresarInvitaciones() {
+		return btnRegresarInvitaciones;
+	}
+	
+	public JTable getTablaVisitantesInvitaciones(){
+		return tablaVisitantesInvitaciones;
+	}
+	
+	public JPanel getPnlEditorInvitaciones(){
+		return pnlEditorInvitaciones;
+	}
+	
+	public JPanel getPnlOpcionesInvitaciones(){
+		return pnlOpcionesInvitaciones;
+	}
+
+	public JFormattedTextField getTxtIDeventoInvitaciones() {
+		return txtIDeventoInvitaciones;
+	}
+
+	public JTextField getTxtNombreEventoInvitaciones() {
+		return txtNombreEventoInvitaciones;
+	}
+
+	public JFormattedTextField getTxtNumeroInvitacion() {
+		return txtNumeroInvitacion;
+	}
+
+	public JComboBox getCbbFiltrarVisitanteInvitaciones() {
+		return cbbFiltrarVisitanteInvitaciones;
+	}
+
+	public JTextField getTxtBuscarVitanteInvitaciones() {
+		return txtBuscarVitanteInvitaciones;
+	}
+	
+	public JButton getBtnNumeroInvitaciones(){
+		return btnNumeroInvitaciones;
+	}
+	
+	public JButton getBtnGuardarCambiosInvitaciones(){
+		return btnGuardarCambiosInvitaciones;
 	}
 }

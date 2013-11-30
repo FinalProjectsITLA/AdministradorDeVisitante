@@ -44,31 +44,24 @@ public class ControladorEventListener implements ActionListener{
 		if(e.getActionCommand().equals("ProximosEventos")){
 			boton.proximosEventos();
 		}
-		
 		if(e.getActionCommand().equals("AgregarEvento")){
 			boton.agregarEvento();
 		}
-		
 		if(e.getActionCommand().equals("ModicarEvento")){
 			boton.modificarEvento();
 		}
-		
 		if(e.getActionCommand().equals("EliminarOpcionEvento")){
 			boton.eliminarOpcionEvento();
 		}
-		
 		if(e.getActionCommand().equals("RegresarMenuEventos")){
 			boton.menuEvento();
 		}
-		
 		if(e.getActionCommand().equals("GuardarEventos")){
 			
 		}
-		
 		if(e.getActionCommand().equals("EliminarOpcionUsuario")){
 			boton.eliminarUsuario();
 		}
-		
 		if(e.getActionCommand().equals("ModificarUsuario")){
 			boton.modificarUsuario();
 		}
@@ -78,6 +71,18 @@ public class ControladorEventListener implements ActionListener{
 		}
 		if(e.getActionCommand().equals("RegresarUsuario")){
 			boton.menuUsuario();
+		}
+		if(e.getActionCommand().equals("RegresarInvitaciones")){
+			boton.menuInvitaciones();
+		}
+		if(e.getActionCommand().equals("CrearInvitaciones")){
+			boton.crearInvitacion();
+		}
+		if(e.getActionCommand().equals("ModificarInvitaciones")){
+			boton.modificarInvitacion();
+		}
+		if(e.getActionCommand().equals("EliminarOpcionInvitaciones")){
+			boton.EliminarOpcionInvitacion();
 		}
 	}
 }

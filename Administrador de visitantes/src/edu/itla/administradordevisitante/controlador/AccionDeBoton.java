@@ -271,6 +271,55 @@ public class AccionDeBoton {
 		
 	}
 	
+	public void crearInvitacion(){
+		
+		Main.getVentanaPrincipal().getPnlEditorInvitaciones().setVisible(true); // Panel Editor de invitaciones
+		Main.getVentanaPrincipal().getLblSubtituloInvitaciones().setVisible(false); // Label Invitaciones
+		Main.getVentanaPrincipal().getPnlOpcionesInvitaciones().setVisible(false); // Panel Opciones Invitaciones
+		//Main.getVentanaPrincipal().getCbbFiltrarVisitanteInvitaciones().setSelectedIndex(0); // Combox Invitaciones
+		Main.getVentanaPrincipal().getTxtIDeventoInvitaciones().setEditable(true); // Txt ID evento de Invitacion
+		Main.getVentanaPrincipal().getBtnInvitarInvitaciones().setEnabled(true); // btn Invitar
+		//Main.getVentanaPrincipal().getBtnBuscarInvitadosInvitaciones().setEnabled(true);
+		Main.getVentanaPrincipal().getTxtNumeroInvitacion().setEditable(false); // txt numero de invitacion
+		Main.getVentanaPrincipal().getBtnNumeroInvitaciones().setEnabled(false); // btn numero de invitacion
+		Main.getVentanaPrincipal().getBtnGuardarCambiosInvitaciones().setEnabled(false); // Btn Guardar cambios Invitaciones
+		Main.getVentanaPrincipal().getBtnEliminarIvitacion().setEnabled(false); // btn Eliminar invitaciones
+		Main.getVentanaPrincipal().getTxtBuscarVitanteInvitaciones().setEditable(true); // txt Buscar visitante Invitaciones
+	}
+	
+	public void modificarInvitacion(){
+		
+		Main.getVentanaPrincipal().getPnlEditorInvitaciones().setVisible(true); // Panel Editor de invitaciones
+		Main.getVentanaPrincipal().getLblSubtituloInvitaciones().setVisible(false); // Label Invitaciones
+		Main.getVentanaPrincipal().getPnlOpcionesInvitaciones().setVisible(false); // Panel Opciones Invitaciones
+		Main.getVentanaPrincipal().getCbbFiltrarVisitanteInvitaciones().setSelectedIndex(0); // Combox Invitaciones
+		Main.getVentanaPrincipal().getTxtIDeventoInvitaciones().setEditable(true); // Txt ID evento de Invitacion
+		Main.getVentanaPrincipal().getBtnInvitarInvitaciones().setEnabled(false); // btn Invitar
+		//Main.getVentanaPrincipal().getBtnBuscarInvitadosInvitaciones().setEnabled(true);
+		Main.getVentanaPrincipal().getTxtNumeroInvitacion().setEditable(true); // txt numero de invitacion
+		Main.getVentanaPrincipal().getBtnNumeroInvitaciones().setEnabled(true); // btn numero de invitacion
+		Main.getVentanaPrincipal().getBtnGuardarCambiosInvitaciones().setEnabled(true); // Btn Guardar cambios Invitaciones
+		Main.getVentanaPrincipal().getBtnEliminarIvitacion().setEnabled(false); // btn Eliminar invitaciones
+		Main.getVentanaPrincipal().getTxtNumeroInvitacion().setEditable(true); // txt numero de de invitacion
+		Main.getVentanaPrincipal().getTxtBuscarVitanteInvitaciones().setEditable(true); // txt Buscar visitante Invitaciones
+	}
+	
+	public void EliminarOpcionInvitacion(){
+		
+		Main.getVentanaPrincipal().getPnlEditorInvitaciones().setVisible(true); // Panel Editor de invitaciones
+		Main.getVentanaPrincipal().getLblSubtituloInvitaciones().setVisible(false); // Label Invitaciones
+		Main.getVentanaPrincipal().getPnlOpcionesInvitaciones().setVisible(false); // Panel Opciones Invitaciones
+		Main.getVentanaPrincipal().getCbbFiltrarVisitanteInvitaciones().setSelectedIndex(0); // Combox Invitaciones
+		Main.getVentanaPrincipal().getTxtIDeventoInvitaciones().setEditable(true); // Txt ID evento de Invitacion
+		Main.getVentanaPrincipal().getBtnInvitarInvitaciones().setEnabled(false); // btn Invitar
+		Main.getVentanaPrincipal().getTxtNumeroInvitacion().setEditable(true); // txt numero de invitacion
+		Main.getVentanaPrincipal().getBtnNumeroInvitaciones().setEnabled(true); // btn numero de invitacion
+		Main.getVentanaPrincipal().getBtnGuardarCambiosInvitaciones().setEnabled(false); // Btn Guardar cambios Invitaciones
+		Main.getVentanaPrincipal().getBtnEliminarIvitacion().setEnabled(true); // btn Eliminar invitaciones
+		Main.getVentanaPrincipal().getTxtNumeroInvitacion().setEditable(true); // txt numero de de invitacion
+		Main.getVentanaPrincipal().getTxtBuscarVitanteInvitaciones().setEditable(true); // txt Buscar visitante Invitaciones
+	}
+	
 	public void menuVisitante(){
 		
 		Main.getVentanaPrincipal().getTxtNombreVisitante().setText("");
@@ -292,7 +341,6 @@ public class AccionDeBoton {
 		Main.getVentanaPrincipal().getPnlDesplegarVisitantesEvento().setVisible(false); // JPanel Desplegar Visitante
 		Main.getVentanaPrincipal().getPnlProximosEventos().setVisible(false); // Jpanle Proximos eventos
 		Main.getVentanaPrincipal().getPnlEditorEventos().setVisible(false); // JPanel Ingresar Evento
-		
 		Main.getVentanaPrincipal().getTxtIDevento().setText(""); // TextField Buscador de Evento
 		Main.getVentanaPrincipal().getTxtNombreEvento().setText(""); // TextField Nombre de evento
 		Main.getVentanaPrincipal().getTxtUbicacionEvento().setText("");  // TextField Ubicacion del evento
@@ -312,5 +360,17 @@ public class AccionDeBoton {
 		Main.getVentanaPrincipal().getTxtClaveUsuario().setText(""); // txt clave de usuario
 		Main.getVentanaPrincipal().getCmxPerfil().setSelectedIndex(0); // Combox de usuario
 		
+	}
+	
+	public void menuInvitaciones(){
+		
+		Main.getVentanaPrincipal().getPnlEditorInvitaciones().setVisible(false); // Panel Editor de invitaciones
+		Main.getVentanaPrincipal().getLblSubtituloInvitaciones().setVisible(false); // Label Invitaciones
+		Main.getVentanaPrincipal().getPnlOpcionesInvitaciones().setVisible(true); // Panel Opciones Invitaciones
+		Main.getVentanaPrincipal().getCbbFiltrarVisitanteInvitaciones().setSelectedIndex(0); // Combox Invitaciones
+		Main.getVentanaPrincipal().getTxtIDeventoInvitaciones().setText(""); // Txt ID evento de Invitacion
+		Main.getVentanaPrincipal().getTxtNombreEventoInvitaciones().setText(""); // txt Nombre de evento Invitaciones
+		Main.getVentanaPrincipal().getTxtNumeroInvitacion().setText(""); // txt numero de de invitacion
+		Main.getVentanaPrincipal().getTxtBuscarVitanteInvitaciones().setText(""); // txt Buscar visitante Invitaciones
 	}
 }
