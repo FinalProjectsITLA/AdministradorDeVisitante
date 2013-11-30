@@ -12,19 +12,20 @@ import javax.swing.JTabbedPane;
 
 import edu.itla.administradordevisitante.controlador.ControladorEventListener;
 import edu.itla.administradordevisitante.controlador.ControladorKeyListener;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = -60578525879179199L;
 	private JPanel contentPane, pnlLogin;
 	private JTextField txtNombreUsuario;
-	private JTextField txtClaveUsuario;
     private JTabbedPane tabbedPane;
     private JLabel lblNombreUsuario;
     private JLabel lblApellidoUsuario;
     private JLabel lblNewLabel;
     private JButton btnInsetarUsuario;
     private JButton btnSalirUsuario;
+    private JPasswordField txtClaveUsuario;
 
 	public Login() {
 		setTitle("Administrador de visitante");
@@ -62,12 +63,6 @@ public class Login extends JFrame {
 		btnSalirUsuario.setActionCommand("Salir");
 		pnlLogin.add(btnSalirUsuario);
 		
-		txtClaveUsuario = new JTextField();
-		txtClaveUsuario.setBounds(192, 71, 142, 20);
-		txtClaveUsuario.addKeyListener(new ControladorKeyListener());
-		pnlLogin.add(txtClaveUsuario);
-		txtClaveUsuario.setColumns(10);
-		
 		txtNombreUsuario = new JTextField();
 		txtNombreUsuario.setBounds(192, 25, 142, 20);
 		txtNombreUsuario.addKeyListener(new ControladorKeyListener());
@@ -86,13 +81,17 @@ public class Login extends JFrame {
 		lblNewLabel.setBounds(12, 0, 106, 143);
 		pnlLogin.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/edu/itla/administradordevisitante/imagenes/login (Copiar)1.gif")));
+		
+		txtClaveUsuario = new JPasswordField();
+		txtClaveUsuario.setBounds(192, 71, 142, 20);
+		pnlLogin.add(txtClaveUsuario);
 	}
 
 	public JTextField getTxtNombreUsuario() {
 		return txtNombreUsuario;
 	}
 
-	public JTextField getTxtClaveUsuario() {
+	public JPasswordField getTxtClaveUsuario() {
 		return txtClaveUsuario;
 	}
 }

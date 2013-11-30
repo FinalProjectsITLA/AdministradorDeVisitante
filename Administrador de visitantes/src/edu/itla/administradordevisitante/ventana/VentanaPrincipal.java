@@ -25,6 +25,7 @@ import edu.itla.administradordevisitante.modelo.ModeloTablaEventosActuales;
 import edu.itla.administradordevisitante.modelo.ModeloTablaEventosProximos;
 import edu.itla.administradordevisitante.modelo.ModeloTablaVisitante;
 import edu.itla.administradordevisitante.modelo.ModeloTablaVisitanteInvitaciones;
+import edu.itla.administradordevisitante.modelo.ModeloTablaVisitanteRegistro;
 
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -138,7 +139,7 @@ public class VentanaPrincipal extends JFrame {
 	private JButton btnEliminarEvento;
 	private JButton btnBuscarIDevento;
 	private JFormattedTextField txtHoraEvento;
-	JCalendar calendario;
+	private JCalendar calendario;
 	private JTextField txtFechaEvento;
 	private JTextField txtIDevento;
 	private JButton btnGuardarCambiosUsuario;
@@ -193,6 +194,15 @@ public class VentanaPrincipal extends JFrame {
 	private JButton bntBuscarRegistro;
 	private JScrollPane scrollPaneVisitantesRegistro;
 	private JTable tablaVisitantesRegistro;
+	private ModeloTablaVisitanteRegistro modeloTablaVisitantesRegisto;
+	private JButton btnRegistrarVisitaRegisto;
+	private JButton btnRegresarRegistro;
+	private JPanel pnlVisitaImprevistaRegistro;
+	private JTextField txtNombreImprevistoRegisto;
+	private JLabel lblNombreImprevistoRegisto;
+	private JLabel lblApellidoImprevistoRegisto;
+	private JTextField txtApellidoImprevistoRegisto;
+	private JLabel lblRazonesImprevistoRegistro;
 	
 	enum categoriaDeBusqueda{
 		
@@ -220,6 +230,7 @@ public class VentanaPrincipal extends JFrame {
 		modelVisitantes = new ModeloTablaVisitante();
 		modelProximosEventos = new ModeloTablaEventosProximos();
 		modeloVisitantesInvitacion = new ModeloTablaVisitanteInvitaciones();
+		modeloTablaVisitantesRegisto = new ModeloTablaVisitanteRegistro();
 		
 		pnlVentanaPrincipal = new JPanel();
 		tabbedPane.addTab("Inicio", null, pnlVentanaPrincipal, null);
@@ -931,7 +942,46 @@ public class VentanaPrincipal extends JFrame {
 		pnlRegistro.setLayout(null);
 		
 		pnlEditorRegistro = new JPanel();
-		pnlEditorRegistro.setBounds(44, 127, 674, 440);
+		pnlEditorRegistro.setVisible(false);
+		
+		pnlVisitaImprevistaRegistro = new JPanel();
+		pnlVisitaImprevistaRegistro.setBounds(44, 106, 674, 291);
+		pnlRegistro.add(pnlVisitaImprevistaRegistro);
+		pnlVisitaImprevistaRegistro.setLayout(null);
+		
+		txtNombreImprevistoRegisto = new JTextField();
+		txtNombreImprevistoRegisto.setColumns(10);
+		txtNombreImprevistoRegisto.setBounds(107, 25, 135, 20);
+		pnlVisitaImprevistaRegistro.add(txtNombreImprevistoRegisto);
+		
+		lblNombreImprevistoRegisto = new JLabel("Nombre :");
+		lblNombreImprevistoRegisto.setForeground(SystemColor.textHighlight);
+		lblNombreImprevistoRegisto.setFont(new Font("Monotype Corsiva", Font.PLAIN, 24));
+		lblNombreImprevistoRegisto.setBounds(10, 24, 79, 21);
+		pnlVisitaImprevistaRegistro.add(lblNombreImprevistoRegisto);
+		
+		lblApellidoImprevistoRegisto = new JLabel("Apellido :");
+		lblApellidoImprevistoRegisto.setForeground(SystemColor.textHighlight);
+		lblApellidoImprevistoRegisto.setFont(new Font("Monotype Corsiva", Font.PLAIN, 24));
+		lblApellidoImprevistoRegisto.setBounds(346, 24, 93, 21);
+		pnlVisitaImprevistaRegistro.add(lblApellidoImprevistoRegisto);
+		
+		txtApellidoImprevistoRegisto = new JTextField();
+		txtApellidoImprevistoRegisto.setColumns(10);
+		txtApellidoImprevistoRegisto.setBounds(455, 25, 150, 20);
+		pnlVisitaImprevistaRegistro.add(txtApellidoImprevistoRegisto);
+		
+		lblRazonesImprevistoRegistro = new JLabel("Razones");
+		lblRazonesImprevistoRegistro.setForeground(SystemColor.textHighlight);
+		lblRazonesImprevistoRegistro.setFont(new Font("Monotype Corsiva", Font.PLAIN, 24));
+		lblRazonesImprevistoRegistro.setBounds(10, 74, 79, 21);
+		pnlVisitaImprevistaRegistro.add(lblRazonesImprevistoRegistro);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setRows(5);
+		textArea_1.setBounds(10, 106, 525, 138);
+		pnlVisitaImprevistaRegistro.add(textArea_1);
+		pnlEditorRegistro.setBounds(44, 127, 674, 426);
 		pnlRegistro.add(pnlEditorRegistro);
 		pnlEditorRegistro.setLayout(null);
 		
@@ -998,10 +1048,20 @@ public class VentanaPrincipal extends JFrame {
 		pnlEditorRegistro.add(bntBuscarRegistro);
 		
 		scrollPaneVisitantesRegistro = new JScrollPane();
-		scrollPaneVisitantesRegistro.setBounds(170, 151, 309, 220);
+		scrollPaneVisitantesRegistro.setBounds(115, 151, 364, 220);
 		pnlEditorRegistro.add(scrollPaneVisitantesRegistro);
 		
 		tablaVisitantesRegistro = new JTable();
+		tablaVisitantesRegistro.setModel(modeloTablaVisitantesRegisto);
+		scrollPaneVisitantesRegistro.setViewportView(tablaVisitantesRegistro);
+		
+		btnRegistrarVisitaRegisto = new JButton("Registrar asistencia");
+		btnRegistrarVisitaRegisto.setBounds(146, 382, 141, 23);
+		pnlEditorRegistro.add(btnRegistrarVisitaRegisto);
+		
+		btnRegresarRegistro = new JButton("Regresar");
+		btnRegresarRegistro.setBounds(297, 382, 141, 23);
+		pnlEditorRegistro.add(btnRegresarRegistro);
 		
 		pnlOpcionRegistro = new JPanel();
 		pnlOpcionRegistro.setBounds(254, 127, 209, 79);
