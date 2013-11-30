@@ -64,12 +64,4 @@ public class ModeloTablaVisitante extends AbstractTableModel{
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		
 	}
-	
-	public void agregar(){
-		
-	}
-	
-	public void eliminar(){
-		
-	}
 }

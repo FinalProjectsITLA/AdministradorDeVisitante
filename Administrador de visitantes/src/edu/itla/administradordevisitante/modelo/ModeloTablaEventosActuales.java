@@ -54,14 +54,4 @@ public class ModeloTablaEventosActuales extends AbstractTableModel{
 		
 		return mostrar;
 	}
-
-	@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		
-	}
-	
-	public void mostrarVisitante(){
-		
-	}
-	
 }

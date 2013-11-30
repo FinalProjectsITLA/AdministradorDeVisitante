@@ -16,7 +16,7 @@ public class ControladorDeVentana {
         	Main.getLoggin().setVisible(false);
         	Main.getVentanaPrincipal().getTabbedPane().setEnabledAt(3, true); // Abilitar pestaña de usuario
         	//Evento
-        	Main.getVentanaPrincipal().getBtnIngresarEvento().setVisible(true);
+        	Main.getVentanaPrincipal().getBtnAgregarEvento().setVisible(true);
         	//Visitante
 			Main.getVentanaPrincipal().getBtnEliminarVisitante().setVisible(true);
 			Main.getVentanaPrincipal().getBtnModificarVisitante().setVisible(true);
@@ -28,7 +28,7 @@ public class ControladorDeVentana {
 			Main.getLoggin().setVisible(false);
 			Main.getVentanaPrincipal().getTabbedPane().setEnabledAt(3, false); // Desabilitar Pestaña de usuario
 			//Evento
-			Main.getVentanaPrincipal().getBtnIngresarEvento().setVisible(false);
+			Main.getVentanaPrincipal().getBtnAgregarEvento().setVisible(false);
 			//Visitante
 			Main.getVentanaPrincipal().getBtnEliminarVisitante().setVisible(false);
 			Main.getVentanaPrincipal().getBtnModificarVisitante().setVisible(false);

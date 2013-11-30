@@ -1,5 +1,7 @@
 package edu.itla.administradordevisitante.main;
 
+import java.text.ParseException;
+
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -13,7 +15,7 @@ public class Main {
 	private static Login login;
 	private static ControladorDeVentana ventana;
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws ParseException{
 		
 		ventana = new ControladorDeVentana();
 		com.jtattoo.plaf.aluminium.AluminiumLookAndFeel.setTheme("");

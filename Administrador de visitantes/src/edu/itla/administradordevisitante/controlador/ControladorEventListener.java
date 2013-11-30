@@ -18,55 +18,66 @@ public class ControladorEventListener implements ActionListener{
 			boton.salir();
 		}
 		
-		if(e.getActionCommand().equals("AgregarVisitante")){ // Comprueba que boton es.
-			boton.AgregarVisitante(); //Se ejecuta la accion del boton
+		if(e.getActionCommand().equals("AgregarVisitante")){
+			boton.agregarVisitante(); 
 		}
 		if(e.getActionCommand().equals("ModificarVisitante")){
-			boton.ModificarVisitante();
+			boton.modificarVisitante();
 		}
 		
 		if(e.getActionCommand().equals("EliminarVisitante")){
-			boton.EliminarVisitante();
+			boton.eliminarVisitante();
 		}
 		
 		if(e.getActionCommand().equals("GuardarVisitanes")){
-			boton.EliminarVisitante();
+			//boton.eliminarVisitante();
+		}
+		
+		if(e.getActionCommand().equals("RegresarMenuVisitante")){
+			boton.menuVisitante();
 		}
 		
 		if(e.getActionCommand().equals("EventosActuales")){
-			boton.EventosActuales();
+			boton.eventosActuales();
 		}
 		
-		if(e.getActionCommand().equals("PróximosEventos")){
-			boton.ProximosEventos();
+		if(e.getActionCommand().equals("ProximosEventos")){
+			boton.proximosEventos();
 		}
 		
-		if(e.getActionCommand().equals("IngresarEvento")){
-			boton.IngresarEvento();
+		if(e.getActionCommand().equals("AgregarEvento")){
+			boton.agregarEvento();
 		}
 		
-		if(e.getActionCommand().equals("RegresarEventos")){
-			boton.RegresarEventos();
+		if(e.getActionCommand().equals("ModicarEvento")){
+			boton.modificarEvento();
+		}
+		
+		if(e.getActionCommand().equals("EliminarOpcionEvento")){
+			boton.eliminarOpcionEvento();
+		}
+		
+		if(e.getActionCommand().equals("RegresarMenuEventos")){
+			boton.menuEvento();
 		}
 		
 		if(e.getActionCommand().equals("GuardarEventos")){
-			boton.GuardarEventos();
+			
 		}
 		
-		if(e.getActionCommand().equals("EliminarUsuario")){
-			boton.EliminarUsuario();
+		if(e.getActionCommand().equals("EliminarOpcionUsuario")){
+			boton.eliminarUsuario();
 		}
 		
 		if(e.getActionCommand().equals("ModificarUsuario")){
-			boton.ModificarUsuario();
+			boton.modificarUsuario();
 		}
 		
-		if(e.getActionCommand().equals("Agregarusuario")){
-			boton.AgregarUsuario();
+		if(e.getActionCommand().equals("AgregarUsuario")){
+			boton.agregarUsuario();
 		}
-		
-		if(e.getActionCommand().equals("CrearUsuario")){
-			boton.CrearUsuario();
+		if(e.getActionCommand().equals("RegresarUsuario")){
+			boton.menuUsuario();
 		}
 	}
 }

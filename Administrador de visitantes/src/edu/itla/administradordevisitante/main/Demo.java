@@ -1,5 +1,7 @@
 package edu.itla.administradordevisitante.main;
 
+import edu.itla.administradordevisitante.basededato.ConexionAbaseDeDato;
+
 public class Demo {
 	/*
 	public enum UserStatus {
@@ -22,14 +24,16 @@ public class Demo {
 	}*/
 	
 	public static void main(String[] args) {
-		
+		/*
 		String a = "Hol";
 		
 		if(a.matches("([a-zA-Z]+[0-9]*)")){
 			System.out.println("BN");
 		}else{
 			System.out.println("--");
-		}
+		}*/
+		
+		System.out.println(ConexionAbaseDeDato.getInstance().getConexion());
 	}
 
 }
